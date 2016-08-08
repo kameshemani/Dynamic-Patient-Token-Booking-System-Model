@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app = "formModule">
+<head>
+<meta charset="ISO-8859-1">
+<title>Patient Token Booking System Model</title>
+<script src="Angular.min.js"> </script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js">
+  </script>
+<script src="form.js"> </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link href="style1.css" rel="stylesheet">
+ </head>
+<body>
+<h1>Dynamic Patient Token Booking System Model</h1>
+<div ng-controller="formController">
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js">
+  </script>	
+	<table>
+		<tr>
+			<th> Token Number </th>
+			<th> Patient Name </th>
+			<th> Sex </th>
+			<th> Age </th>
+			<th> Phone Number </th>
+			<th> Email Id </th>
+		</tr>
+		<tr ng-repeat = "data in data"> <td> {{$index + 1}}</td>
+			<td> {{data.name}} </td>
+			<td> {{data.sex}} </td>
+			<td> {{data.age}} </td>
+			<td> {{data.phonenumber}} </td>
+			<td> {{data.email}} </td>
+			<td> <a href="" ng-click="removeData(data1)">Remove</a>
+			</tr>
+	</table>
+	
+	
+	<form ng-submit="addData()" name="form1">
+	<div class="cont1">Fill in the patient details </div>
+	Patient Name : <br /> <input type="text" placeholder="john" ng-model="newData.name" required> <br />
+	Sex : <br /> <input type="radio" ng-model="newData.sex" name="gender" value="Male" checked required> Male
+  		  <input type="radio" ng-model="newData.sex" name="gender" value="Female" > Female<br>
+<label>
+	Age: <br />
+    <input type="number" placeholder="20" ng-model="newData.age"
+           min="0" max="99"  maxlength="2"required>
+</label>
+<div role="alert">
+    <span class="error" ng-show="form1.input.$error.number">
+      Not valid number!</span>
+ </div>
+<label>
+Phone Number: <br />
+    <input type="number" placeholder="9999999999" ng-model="newData.phonenumber"
+           min="1000000000" max="9999999999"  maxlength="10" required>
+</label>
+<div role="alert">
+    <span class="error" ng-show="form1.input.$error.number">
+      Not valid number!</span>
+</div>
+ Email Id: <br /><input type="email" placeholder="john@dnah.com"name="newData.email" ng-model="newData.email" required> <br />
+
+<input type="submit" value="Add Data"> 
+
+</form>
+<br /> 
+	
+ <h5> <strong>Note </strong> : Here we are not saving the data i.e once we refresh the page data disappears. <br />We can store the data by injecting data into mongodb or sql database as per our requirement </h5>
+
+</body>
+</html>
